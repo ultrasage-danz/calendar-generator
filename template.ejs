@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .calendar {
+            display: flex;
+            justify-content: space-around;
+        }
+        .day {
+            text-align: center;
+        }
+        .time-slot {
+            margin: 5px;
+            padding: 5px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar">
+        <% data.forEach(day => { %>
+            <div class="day">
+                <h3><%= new Date(day.date).toLocaleDateString('es-ES', { weekday: 'long', day: '2-digit', month: '2-digit' }) %></h3>
+                <% day.available_slots.forEach(slot => { %>
+                    <div class="time-slot"><%= slot.time %></div>
+                <% }) %>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>
